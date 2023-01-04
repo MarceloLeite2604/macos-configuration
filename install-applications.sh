@@ -14,14 +14,20 @@ applications=(
   zsh
   zoom
   git
+  git-gui
   mvn
   nvm
   jumpcut
   rar
   shellcheck
-  temurin
+  # ML 2022-01-03: Brew is not mature yet to handle multiple versions of the same 
+  # package installed at the same time so, for now, it is better to manually install 
+  # Temurin versions and use environment variables to switch between them (or use SDKMAN).
+  # temurin 
   docker-compose
   postman
+  mongodb-compass
+  pgadmin4
 )
 readonly applications;
 
