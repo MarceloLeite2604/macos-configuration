@@ -18,6 +18,10 @@ applications=(
   nvm
   jumpcut
   rar
+  shellcheck
+  temurin
+  docker-compose
+  postman
 )
 readonly applications;
 
@@ -31,12 +35,12 @@ brew_bin=$(which brew);
 
 for application in "${applications[@]}";
 do
-  if brew list $application > /dev/null 2>&1;
+  if brew list "$application" > /dev/null 2>&1;
   then
     echo "Application $application is already installed.";
   else
     echo "Installing $application using Homebrew.";
-    brew install $application;
+    brew install "$application";
   fi;
 done
 
