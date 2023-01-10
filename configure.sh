@@ -2,9 +2,18 @@
 
 set -e;
 
+macos_monterey="13"
+readonly macos_monterey;
+
+os_major_version=$(sw_vers -productVersion | cut -d '.' -f 1);
+readonly os_major_version;
+
+
 # Touchbar
 echo "Modifying touchbar to present function keys."
-plutil -replace PresentationModeFnModes.appWithControlStrip -string functionKeys ~/Library/Preferences/com.apple.touchbar.agent.plist
+if [[ "$os_major_version" -eq "$macos_monterey" ]]; then
+    plutil -replace PresentationModeFnModes.appWithControlStrip -string functionKeys ~/Library/Preferences/com.apple.touchbar.agent.plist
+fi;
 plutil -replace PresentationModeGlobal -string functionKeys ~/Library/Preferences/com.apple.touchbar.agent.plist
 
 echo "Disabling touchbar typing suggestions."
